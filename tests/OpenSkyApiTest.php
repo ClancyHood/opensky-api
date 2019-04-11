@@ -22,7 +22,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getFlights() throws an exception if the time interval is greater than 2 hours.
      */
-    public function testGetFlightsInvalidTimeInterval(): void
+    public function testGetFlightsWithInvalidTimeInterval(): void
     {
         $client = new OpenSkyApi();
 
@@ -34,7 +34,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getFlightsByAircraft() throws an exception if the `icao24` parameter is empty.
      */
-    public function testGetFlightsByAircraftICAO24Empty(): void
+    public function testGetFlightsByAircraftWithEmptyICAO24(): void
     {
         $client = new OpenSkyApi();
 
@@ -46,7 +46,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getFlightsByAircraft() throws an exception if the `icao24` parameter is invalid.
      */
-    public function testGetFlightsByAircraftICAO24Invalid(): void
+    public function testGetFlightsByAircraftWithInvalidICAO24(): void
     {
         $client = new OpenSkyApi();
 
@@ -58,7 +58,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getFlightsByAircraft() throws an exception if the time interval is greater than 30 days.
      */
-    public function testGetFlightsByAircraftInvalidTimeInterval(): void
+    public function testGetFlightsByAircraftWithInvalidTimeInterval(): void
     {
         $client = new OpenSkyApi();
 
@@ -68,9 +68,81 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
+     * @testdox Method getFlightsByArrivalAirport() throws an exception if the `airport` parameter is empty.
+     */
+    public function testGetFlightsByArrivalAirportWithEmptyAirport(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('empty value is not allowed for the `airport` parameter');
+        $client->getFlightsByArrivalAirport('', 1500000000, 1500000000);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByArrivalAirport() throws an exception if the `airport` parameter is invalid.
+     */
+    public function testGetFlightsByArrivalAirportWithInvalidAirport(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid ICAO airport code for the `airport` parameter');
+        $client->getFlightsByArrivalAirport('badvalue', 1500000000, 1500000000);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByArrivalAirport() throws an exception if the time interval is greater than 7 days.
+     */
+    public function testGetFlightsByArrivalAirportWithInvalidTimeInterval(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('time interval exceeds the maximum allowed');
+        $client->getFlightsByArrivalAirport('LFBO', 1500000000, 1500604801);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByDepartureAirport() throws an exception if the `airport` parameter is empty.
+     */
+    public function testGetFlightsByDepartureAirportWithEmptyAirport(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('empty value is not allowed for the `airport` parameter');
+        $client->getFlightsByDepartureAirport('', 1500000000, 1500000000);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByDepartureAirport() throws an exception if the `airport` parameter is invalid.
+     */
+    public function testGetFlightsByDepartureAirportWithInvalidAirport(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid ICAO airport code for the `airport` parameter');
+        $client->getFlightsByDepartureAirport('badvalue', 1500000000, 1500000000);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByDepartureAirport() throws an exception if the time interval is greater than 7 days.
+     */
+    public function testGetFlightsByDepartureAirportWithInvalidTimeInterval(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('time interval exceeds the maximum allowed');
+        $client->getFlightsByDepartureAirport('LFBO', 1500000000, 1500604801);
+    }
+
+    /**
+     * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if the `icao24` parameter is not an array.
      */
-    public function testgetOwnStatesICAO24WrongType(): void
+    public function testgetOwnStatesWithWrongICAO24Type(): void
     {
         $client = new OpenSkyApi();
 
@@ -82,7 +154,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is not a string.
      */
-    public function testgetOwnStatesICAO24ElementWrongType(): void
+    public function testgetOwnStatesWithWrongICAO24ElementType(): void
     {
         $client = new OpenSkyApi();
 
@@ -94,7 +166,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is empty.
      */
-    public function testgetOwnStatesICAO24ElementEmpty(): void
+    public function testgetOwnStatesWithEmptyICAO24Element(): void
     {
         $client = new OpenSkyApi();
 
@@ -106,7 +178,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is invalid.
      */
-    public function testgetOwnStatesICAO24ElementInvalid(): void
+    public function testgetOwnStatesWithInvalidICAO24Element(): void
     {
         $client = new OpenSkyApi();
 
@@ -118,7 +190,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if the `time` parameter is not an integer.
      */
-    public function testgetOwnStatesTimeWrongType(): void
+    public function testgetOwnStatesWithWrongTimeType(): void
     {
         $client = new OpenSkyApi();
 
@@ -130,7 +202,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if the `time` parameter is more than 1 hour in the past.
      */
-    public function testgetOwnStatesTimeTooLow(): void
+    public function testgetOwnStatesWithInvalidTime(): void
     {
         $client = new OpenSkyApi();
 
@@ -142,7 +214,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if the `serials` parameter is not an array.
      */
-    public function testgetOwnStatesSerialsWrongType(): void
+    public function testgetOwnStatesWithWrongSerialsType(): void
     {
         $client = new OpenSkyApi();
 
@@ -154,7 +226,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if an element of the `serials` parameter is not a string.
      */
-    public function testgetOwnStatesSerialsElementWrongType(): void
+    public function testgetOwnStatesWithWrongSerialsElementType(): void
     {
         $client = new OpenSkyApi();
 
@@ -166,7 +238,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `icao24` parameter is not an array.
      */
-    public function testGetStatesICAO24WrongType(): void
+    public function testGetStatesWithWrongICAO24Type(): void
     {
         $client = new OpenSkyApi();
 
@@ -178,7 +250,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if an element of the `icao24` parameter is not a string.
      */
-    public function testGetStatesICAO24ElementWrongType(): void
+    public function testGetStatesWithWrongICAO24ElementType(): void
     {
         $client = new OpenSkyApi();
 
@@ -190,7 +262,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if an element of the `icao24` parameter is empty.
      */
-    public function testGetStatesICAO24ElementEmpty(): void
+    public function testGetStatesWithEmptyICAO24Element(): void
     {
         $client = new OpenSkyApi();
 
@@ -202,7 +274,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if an element of the `icao24` parameter is invalid.
      */
-    public function testGetStatesICAO24ElementInvalid(): void
+    public function testGetStatesWithInvalidICAO24Element(): void
     {
         $client = new OpenSkyApi();
 
@@ -214,7 +286,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `time` parameter is not an integer.
      */
-    public function testGetStatesTimeWrongType(): void
+    public function testGetStatesWithWrongTimeType(): void
     {
         $client = new OpenSkyApi();
 
@@ -226,7 +298,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `time` parameter is more than 1 hour in the past.
      */
-    public function testGetStatesTimeTooLow(): void
+    public function testGetStatesWithInvalidTime(): void
     {
         $client = new OpenSkyApi();
 
@@ -238,7 +310,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lamin` parameter is not a float.
      */
-    public function testGetStatesLaminWrongType(): void
+    public function testGetStatesWithWrongLaminType(): void
     {
         $client = new OpenSkyApi();
 
@@ -250,7 +322,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lamin` parameter is below the valid range.
      */
-    public function testGetStatesLaminTooLow(): void
+    public function testGetStatesWithLaminTooLow(): void
     {
         $client = new OpenSkyApi();
 
@@ -262,7 +334,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lamin` parameter is over the valid range.
      */
-    public function testGetStatesLaminTooHigh(): void
+    public function testGetStatesWithLaminTooHigh(): void
     {
         $client = new OpenSkyApi();
 
@@ -274,7 +346,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lomin` parameter is not a float.
      */
-    public function testGetStatesLominWrongType(): void
+    public function testGetStatesWithWrongLominType(): void
     {
         $client = new OpenSkyApi();
 
@@ -286,7 +358,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lomin` parameter is below the valid range.
      */
-    public function testGetStatesLominTooLow(): void
+    public function testGetStatesWithLominTooLow(): void
     {
         $client = new OpenSkyApi();
 
@@ -298,7 +370,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lomin` parameter is over the valid range.
      */
-    public function testGetStatesLominTooHigh(): void
+    public function testGetStatesWithLominTooHigh(): void
     {
         $client = new OpenSkyApi();
 
@@ -310,7 +382,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lamax` parameter is not a float.
      */
-    public function testGetStatesLamaxWrongType(): void
+    public function testGetStatesWithWrongLamaxType(): void
     {
         $client = new OpenSkyApi();
 
@@ -322,7 +394,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lamax` parameter is below the valid range.
      */
-    public function testGetStatesLamaxTooLow(): void
+    public function testGetStatesWithLamaxTooLow(): void
     {
         $client = new OpenSkyApi();
 
@@ -334,7 +406,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lamax` parameter is over the valid range.
      */
-    public function testGetStatesLamaxTooHigh(): void
+    public function testGetStatesWithLamaxTooHigh(): void
     {
         $client = new OpenSkyApi();
 
@@ -346,7 +418,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lomax` parameter is not a float.
      */
-    public function testGetStatesLomaxWrongType(): void
+    public function testGetStatesWithWrongLomaxType(): void
     {
         $client = new OpenSkyApi();
 
@@ -358,7 +430,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lomax` parameter is below the valid range.
      */
-    public function testGetStatesLomaxTooLow(): void
+    public function testGetStatesWithLomaxTooLow(): void
     {
         $client = new OpenSkyApi();
 
@@ -370,7 +442,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `lomax` parameter is over the valid range.
      */
-    public function testGetStatesLomaxTooHigh(): void
+    public function testGetStatesWithLomaxTooHigh(): void
     {
         $client = new OpenSkyApi();
 
@@ -382,7 +454,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getTrack() throws an exception if the `icao24` parameter is empty.
      */
-    public function testGetTrackICAO24Empty(): void
+    public function testGetTrackWithEmptyICAO24(): void
     {
         $client = new OpenSkyApi();
 
@@ -394,7 +466,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getTrack() throws an exception if the `icao24` parameter is invalid.
      */
-    public function testGetTrackICAO24Invalid(): void
+    public function testGetTrackWithInvalidICAO24(): void
     {
         $client = new OpenSkyApi();
 
@@ -406,7 +478,7 @@ final class OpenSkyApiTest extends TestCase
      * @depends testConstructor
      * @testdox Method getTrack() throws an exception if the `time` parameter is more than 30 days in the past.
      */
-    public function testGetTrackTimeTooLow(): void
+    public function testGetTrackWithInvalidTime(): void
     {
         $client = new OpenSkyApi();
 
