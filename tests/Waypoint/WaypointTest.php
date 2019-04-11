@@ -14,10 +14,10 @@ final class WaypointTest extends TestCase
 
     public function testGetBarometricAltitude(): void
     {
-        $waypoint = new Waypoint([3 => 914]);
+        $waypoint = new Waypoint([3 => 914.0]);
 
         $this->assertIsInt($waypoint->getBarometricAltitude());
-        $this->assertEquals(914, $waypoint->getBarometricAltitude());
+        $this->assertEquals(914.0, $waypoint->getBarometricAltitude());
 
         $waypoint = new Waypoint([3 => null]);
 
