@@ -415,9 +415,10 @@ class OpenSkyApi implements OpenSkyApiInterface
                     'message' => '{{ value }} is not a valid {{ type }} value for the `lamin` parameter.',
                 ]),
                 new Range([
-                    'min'     => -90,
-                    'max'     => 90,
-                    'message' => '{{ value }} is not within the valid range [-90,90] for the `lamin` parameter.',
+                    'min'        => -90,
+                    'minMessage' => '{{ value }} is not within the valid range [-90,90] for the `lamin` parameter.',
+                    'max'        => 90,
+                    'maxMessage' => '{{ value }} is not within the valid range [-90,90] for the `lamin` parameter.',
                 ]),
             ]));
         }
@@ -429,9 +430,10 @@ class OpenSkyApi implements OpenSkyApiInterface
                     'message' => '{{ value }} is not a valid {{ type }} value for the `lomin` parameter.',
                 ]),
                 new Range([
-                    'min'     => -180,
-                    'max'     => 180,
-                    'message' => '{{ value }} is not within the valid range [-180,180] for the `lomin` parameter.',
+                    'min'        => -180,
+                    'minMessage' => '{{ value }} is not within the valid range [-180,180] for the `lomin` parameter.',
+                    'max'        => 180,
+                    'maxMessage' => '{{ value }} is not within the valid range [-180,180] for the `lomin` parameter.',
                 ]),
             ]));
         }
@@ -443,9 +445,10 @@ class OpenSkyApi implements OpenSkyApiInterface
                     'message' => '{{ value }} is not a valid {{ type }} value for the `lamax` parameter.',
                 ]),
                 new Range([
-                    'min'     => -90,
-                    'max'     => 90,
-                    'message' => '{{ value }} is not within the valid range [-90,90] for the `lamax` parameter.',
+                    'min'        => -90,
+                    'minMessage' => '{{ value }} is not within the valid range [-90,90] for the `lamax` parameter.',
+                    'max'        => 90,
+                    'maxMessage' => '{{ value }} is not within the valid range [-90,90] for the `lamax` parameter.',
                 ]),
             ]));
         }
@@ -457,9 +460,10 @@ class OpenSkyApi implements OpenSkyApiInterface
                     'message' => '{{ value }} is not a valid {{ type }} value for the `lomax` parameter.',
                 ]),
                 new Range([
-                    'min'     => -180,
-                    'max'     => 180,
-                    'message' => '{{ value }} is not within the valid range [-180,180] for the `lomax` parameter.',
+                    'min'        => -180,
+                    'minMessage' => '{{ value }} is not within the valid range [-180,180] for the `lomax` parameter.',
+                    'max'        => 180,
+                    'maxMessage' => '{{ value }} is not within the valid range [-180,180] for the `lomax` parameter.',
                 ]),
             ]));
         }
