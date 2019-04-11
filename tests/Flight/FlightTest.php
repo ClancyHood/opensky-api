@@ -7,11 +7,18 @@ use PHPUnit\Framework\TestCase;
 
 final class FlightTest extends TestCase
 {
+    /**
+     * @testdox Constructor is callable.
+     */
     public function testConstructor(): void
     {
         $this->assertInstanceOf(Flight::class, new Flight());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getArrivalAirport() returns expected data.
+     */
     public function testGetArrivalAirport(): void
     {
         $flight = new Flight(['estArrivalAirport' => 'EDDF']);
@@ -24,6 +31,10 @@ final class FlightTest extends TestCase
         $this->assertNull($flight->getArrivalAirport());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getArrivalAirportCandidatesCount() returns expected data.
+     */
     public function testGetArrivalAirportCandidatesCount(): void
     {
         $flight = new Flight(['arrivalAirportCandidatesCount' => 2]);
@@ -37,6 +48,10 @@ final class FlightTest extends TestCase
         $this->assertEquals(2, $flight->getArrivalAirportCandidatesCount());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getArrivalAirportHorizontalDistance() returns expected data.
+     */
     public function testGetArrivalAirportHorizontalDistance(): void
     {
         $flight = new Flight(['estArrivalAirportHorizDistance' => 1593]);
@@ -54,6 +69,10 @@ final class FlightTest extends TestCase
         $this->assertNull($flight->getArrivalAirportHorizontalDistance());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getArrivalAirportVerticalDistance() returns expected data.
+     */
     public function testGetArrivalAirportVerticalDistance(): void
     {
         $flight = new Flight(['estArrivalAirportVertDistance' => 95]);
@@ -71,6 +90,10 @@ final class FlightTest extends TestCase
         $this->assertNull($flight->getArrivalAirportVerticalDistance());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getArrivalTime() returns expected data.
+     */
     public function testGetArrivalTime(): void
     {
         $flight = new Flight(['lastSeen' => 1517230737]);
@@ -84,6 +107,10 @@ final class FlightTest extends TestCase
         $this->assertEquals(1517230737, $flight->getArrivalTime());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getCallsign() returns expected data.
+     */
     public function testGetCallsign(): void
     {
         $flight = new Flight(['callsign' => 'MSR785  ']);
@@ -92,6 +119,10 @@ final class FlightTest extends TestCase
         $this->assertEquals('MSR785  ', $flight->getCallsign());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getDepartureAirport() returns expected data.
+     */
     public function testGetDepartureAirport(): void
     {
         $flight = new Flight(['estDepartureAirport' => 'EDDT']);
@@ -104,6 +135,10 @@ final class FlightTest extends TestCase
         $this->assertNull($flight->getDepartureAirport());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getDepartureAirportCandidatesCount() returns expected data.
+     */
     public function testGetDepartureAirportCandidatesCount(): void
     {
         $flight = new Flight(['departureAirportCandidatesCount' => 1]);
@@ -117,6 +152,10 @@ final class FlightTest extends TestCase
         $this->assertEquals(1, $flight->getDepartureAirportCandidatesCount());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getDepartureAirportHorizontalDistance() returns expected data.
+     */
     public function testGetDepartureAirportHorizontalDistance(): void
     {
         $flight = new Flight(['estDepartureAirportHorizDistance' => 191]);
@@ -134,6 +173,10 @@ final class FlightTest extends TestCase
         $this->assertNull($flight->getDepartureAirportHorizontalDistance());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getDepartureAirportVerticalDistance() returns expected data.
+     */
     public function testGetDepartureAirportVerticalDistance(): void
     {
         $flight = new Flight(['estDepartureAirportVertDistance' => 54]);
@@ -151,6 +194,10 @@ final class FlightTest extends TestCase
         $this->assertNull($flight->getDepartureAirportVerticalDistance());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getDepartureTime() returns expected data.
+     */
     public function testGetDepartureTime(): void
     {
         $flight = new Flight(['firstSeen' => 1517227831]);
@@ -164,6 +211,10 @@ final class FlightTest extends TestCase
         $this->assertEquals(1517227831, $flight->getDepartureTime());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getICAO24() returns expected data.
+     */
     public function testGetICAO24(): void
     {
         $flight = new Flight(['icao24' => '3c6675']);

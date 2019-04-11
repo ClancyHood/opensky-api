@@ -8,11 +8,18 @@ use PHPUnit\Framework\TestCase;
 
 final class StateCollectionTest extends TestCase
 {
+    /**
+     * @testdox Constructor is callable.
+     */
     public function testConstructor(): void
     {
         $this->assertInstanceOf(StateCollection::class, new StateCollection());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getStates() returns expected data.
+     */
     public function testGetStates(): void
     {
         $stateCollection = new StateCollection(['states' => [[], []]]);
@@ -27,6 +34,10 @@ final class StateCollectionTest extends TestCase
         $this->assertEmpty($stateCollection->getStates());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getTimestamp() returns expected data.
+     */
     public function testGetTimestamp(): void
     {
         $stateCollection = new StateCollection(['time' => 1554818330]);
@@ -40,6 +51,10 @@ final class StateCollectionTest extends TestCase
         $this->assertEquals(1554818330, $stateCollection->getTimestamp());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Countable interface is properly implemented.
+     */
     public function testCountableInterface(): void
     {
         $stateCollection = new StateCollection(['states' => [[], []]]);
@@ -48,6 +63,10 @@ final class StateCollectionTest extends TestCase
         $this->assertEquals(2, $stateCollection->count());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Iterator interface is properly implemented.
+     */
     public function testIteratorInterface(): void
     {
         $stateCollection = new StateCollection(['states' => [[], []]]);

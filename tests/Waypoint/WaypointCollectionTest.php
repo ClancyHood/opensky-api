@@ -8,11 +8,18 @@ use PHPUnit\Framework\TestCase;
 
 final class WaypointCollectionTest extends TestCase
 {
+    /**
+     * @testdox Constructor is callable.
+     */
     public function testConstructor(): void
     {
         $this->assertInstanceOf(WaypointCollection::class, new WaypointCollection());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getCallsign() returns expected data.
+     */
     public function testGetCallsign(): void
     {
         $waypointCollection = new WaypointCollection(['callsign' => 'GAF891']);
@@ -25,6 +32,10 @@ final class WaypointCollectionTest extends TestCase
         $this->assertNull($waypointCollection->getCallsign());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getEndTime() returns expected data.
+     */
     public function testGetEndTime(): void
     {
         $waypointCollection = new WaypointCollection(['endTime' => 1552606604]);
@@ -38,6 +49,10 @@ final class WaypointCollectionTest extends TestCase
         $this->assertEquals(1552606604, $waypointCollection->getEndTime());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getICAO24() returns expected data.
+     */
     public function testGetICAO24(): void
     {
         $waypointCollection = new WaypointCollection(['icao24' => '3c4b26']);
@@ -46,6 +61,10 @@ final class WaypointCollectionTest extends TestCase
         $this->assertEquals('3c4b26', $waypointCollection->getICAO24());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getStartTime() returns expected data.
+     */
     public function testGetStartTime(): void
     {
         $waypointCollection = new WaypointCollection(['startTime' => 1552601876]);
@@ -59,6 +78,10 @@ final class WaypointCollectionTest extends TestCase
         $this->assertEquals(1552601876, $waypointCollection->getStartTime());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Method getWaypoints() returns expected data.
+     */
     public function testGetWaypoints(): void
     {
         $waypointCollection = new WaypointCollection(['path' => [[], []]]);
@@ -73,6 +96,10 @@ final class WaypointCollectionTest extends TestCase
         $this->assertEmpty($waypointCollection->getWaypoints());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Countable interface is properly implemented.
+     */
     public function testCountableInterface(): void
     {
         $waypointCollection = new WaypointCollection(['path' => [[], []]]);
@@ -81,6 +108,10 @@ final class WaypointCollectionTest extends TestCase
         $this->assertEquals(2, $waypointCollection->count());
     }
 
+    /**
+     * @depends testConstructor
+     * @testdox Iterator interface is properly implemented.
+     */
     public function testIteratorInterface(): void
     {
         $waypointCollection = new WaypointCollection(['path' => [[], []]]);
