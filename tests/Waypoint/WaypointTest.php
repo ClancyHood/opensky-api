@@ -19,6 +19,11 @@ final class WaypointTest extends TestCase
         $this->assertIsFloat($waypoint->getBarometricAltitude());
         $this->assertEquals(914.0, $waypoint->getBarometricAltitude());
 
+        $waypoint = new Waypoint([3 => '914']);
+
+        $this->assertIsFloat($waypoint->getBarometricAltitude());
+        $this->assertEquals(914.0, $waypoint->getBarometricAltitude());
+
         $waypoint = new Waypoint([3 => null]);
 
         $this->assertNull($waypoint->getBarometricAltitude());
@@ -27,6 +32,11 @@ final class WaypointTest extends TestCase
     public function testGetHeading(): void
     {
         $waypoint = new Waypoint([4 => 87.0]);
+
+        $this->assertIsFloat($waypoint->getHeading());
+        $this->assertEquals(87.0, $waypoint->getHeading());
+
+        $waypoint = new Waypoint([4 => '87']);
 
         $this->assertIsFloat($waypoint->getHeading());
         $this->assertEquals(87.0, $waypoint->getHeading());
@@ -43,6 +53,11 @@ final class WaypointTest extends TestCase
         $this->assertIsFloat($waypoint->getLatitude());
         $this->assertEquals(13.2072, $waypoint->getLatitude());
 
+        $waypoint = new Waypoint([1 => '13.2072']);
+
+        $this->assertIsFloat($waypoint->getLatitude());
+        $this->assertEquals(13.2072, $waypoint->getLatitude());
+
         $waypoint = new Waypoint([1 => null]);
 
         $this->assertNull($waypoint->getLatitude());
@@ -51,6 +66,11 @@ final class WaypointTest extends TestCase
     public function testGetLongitude(): void
     {
         $waypoint = new Waypoint([2 => 77.734]);
+
+        $this->assertIsFloat($waypoint->getLongitude());
+        $this->assertEquals(77.734, $waypoint->getLongitude());
+
+        $waypoint = new Waypoint([2 => '77.734']);
 
         $this->assertIsFloat($waypoint->getLongitude());
         $this->assertEquals(77.734, $waypoint->getLongitude());
@@ -71,6 +91,11 @@ final class WaypointTest extends TestCase
     public function testGetTime(): void
     {
         $waypoint = new Waypoint([0 => 1552601876]);
+
+        $this->assertIsInt($waypoint->getTime());
+        $this->assertEquals(1552601876, $waypoint->getTime());
+
+        $waypoint = new Waypoint([0 => '1552601876']);
 
         $this->assertIsInt($waypoint->getTime());
         $this->assertEquals(1552601876, $waypoint->getTime());
