@@ -329,4 +329,40 @@ final class OpenSkyApiTest extends TestCase
         $this->expectExceptionMessage('is not within the valid range [-180,180] for the `lomax` parameter');
         $client->getStates(['lomax' => 200.0]);
     }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getTrack() throws an exception if the `icao24` parameter is empty.
+     */
+    public function testGetTrackICAO24Empty(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('empty value is not allowed for the `icao24` parameter');
+        $client->getTrack('');
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getTrack() throws an exception if the `icao24` parameter is not a valid ICAO 24-bit address.
+     */
+    public function testGetTrackICAO24Invalid(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid ICAO 24-bit address for the `icao24` parameter');
+        $client->getTrack('badvalue');
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getTrack() throws an exception if the `time` parameter is more than 30 days in the past.
+     */
+    public function testGetTrackTimeTooLow(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is more than 30 days in the past for the `time` parameter');
+        $client->getTrack('3c6444', 1500000000);
+    }
 }
