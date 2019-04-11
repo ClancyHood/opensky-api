@@ -51,6 +51,10 @@ An array of `Flight` objects.
 | \InvalidArgumentException | If any parameter is invalid.             |
 | \Exception                | If any other error occurs.               |
 
+##### Limitations
+
+- The time interval must not be greater than 2 hours (7 200 seconds). If the provided time interval is greater than the limit, an `\InvalidArgumentException` is thrown.
+
 ___
 #### Flights by aircraft
 
@@ -82,6 +86,10 @@ An array of `Flight` objects.
 | \InvalidArgumentException | If any parameter is invalid.             |
 | \Exception                | If any other error occurs.               |
 
+##### Limitations
+
+- The time interval must not be greater than 30 days (2 592 000 seconds). If the provided time interval is greater than the limit, an `\InvalidArgumentException` is thrown.
+
 ___
 #### Fights by arrival airport
 
@@ -112,6 +120,10 @@ An array of `Flight` objects.
 | BadCredentialsException   | If the provided credentials are invalid. |
 | \InvalidArgumentException | If any parameter is invalid.             |
 | \Exception                | If any other error occurs.               |
+
+##### Limitations
+
+- The time interval must not be greater than 7 days (604 800 seconds). If the provided time interval is greater than the limit, an `\InvalidArgumentException` is thrown.
 
 ___
 
@@ -146,6 +158,8 @@ An array of `Flight` objects.
 | \Exception                | If any other error occurs.               |
 
 ##### Limitations
+
+- The time interval must not be greater than 7 days (604 800 seconds). If the provided time interval is greater than the limit, an `\InvalidArgumentException` is thrown.
 
 
 ### State vectors
@@ -195,7 +209,7 @@ A `StateCollection` object.
 
 - Anonymous users can only get the most recent state vectors, i.e. the `time` parameter will be ignored.
 - Anonymous users can only retrieve data with a time resolution of 10 seconds.
-- Authenticated users can retrieve data of up to 1 hour in the past. If the provided time interval is greater than 1 hour, an `\InvalidArgumentException` is thrown.
+- Authenticated users can retrieve data of up to 1 hour in the past. If the provided time interval is greater than the limit, an `\InvalidArgumentException` is thrown.
 - Authenticated users can retrieve data with a time resolution of 5 seconds.
 ___
 
@@ -274,6 +288,10 @@ A `WaypointCollection` object, or null if no data is available.
 | BadCredentialsException   | If the provided credentials are invalid. |
 | \InvalidArgumentException | If any parameter is invalid.             |
 | \Exception                | If any other error occurs.               |
+
+##### Limitations
+
+- The timestamp must not be more than 30 days (2 592 000 seconds) in the past. If the provided timestamp is older than the limit, an `\InvalidArgumentException` is thrown.
 
 
 
