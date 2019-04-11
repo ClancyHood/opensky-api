@@ -299,8 +299,15 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         if (array_key_exists('icao24', $parameters)) {
             $violations->addAll($this->validator->validate($parameters['icao24'], [
+                new Type([
+                    'type'    => 'array',
+                    'message' => '{{ value }} is not a valid {{ type }} value for the `icao24` parameter.',
+                ]),
                 new All([
                     'constraints' => [
+                        new NotBlank([
+                            'message' => 'An empty value is not allowed for the `icao24` parameter.',
+                        ]),
                         new Type([
                             'type'    => 'string',
                             'message' => '{{ value }} is not a valid {{ type }} value for the `icao24` parameter.',
@@ -329,8 +336,15 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         if (array_key_exists('serials', $parameters)) {
             $violations->addAll($this->validator->validate($parameters['serials'], [
+                new Type([
+                    'type'    => 'array',
+                    'message' => '{{ value }} is not a valid {{ type }} value for the `serials` parameter.',
+                ]),
                 new All([
                     'constraints' => [
+                        new NotBlank([
+                            'message' => 'An empty value is not allowed for the `serials` parameter.',
+                        ]),
                         new Type([
                             'type'    => 'int',
                             'message' => '{{ value }} is not a valid {{ type }} value for the `serials` parameter.',
@@ -380,8 +394,15 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         if (array_key_exists('icao24', $parameters)) {
             $violations->addAll($this->validator->validate($parameters['icao24'], [
+                new Type([
+                    'type'    => 'array',
+                    'message' => '{{ value }} is not a valid {{ type }} value for the `icao24` parameter.',
+                ]),
                 new All([
                     'constraints' => [
+                        new NotBlank([
+                            'message' => 'An empty value is not allowed for the `icao24` parameter.',
+                        ]),
                         new Type([
                             'type'    => 'string',
                             'message' => '{{ value }} is not a valid {{ type }} value for the `icao24` parameter.',
