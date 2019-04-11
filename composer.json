@@ -2,7 +2,7 @@
     "type": "library",
     "name": "jbroutier/opensky-api",
     "description": "A PHP client to retrieve data from the OpenSky live API.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "license": "MIT",
     "authors": [
         {
