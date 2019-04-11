@@ -20,6 +20,78 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if the `icao24` parameter is not an array.
+     */
+    public function testgetOwnStatesICAO24WrongType(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid array value for the `icao24` parameter');
+        $client->getOwnStates(['icao24' => '32abfa']);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is not a string.
+     */
+    public function testgetOwnStatesICAO24ElementWrongType(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid string value for the `icao24` parameter');
+        $client->getOwnStates(['icao24' => ['32abfa', 0x32abfa]]);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is empty.
+     */
+    public function testgetOwnStatesICAO24ElementEmpty(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('empty value is not allowed for the `icao24` parameter');
+        $client->getOwnStates(['icao24' => ['32abfa', '']]);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is not a valid ICAO 24-bit address.
+     */
+    public function testgetOwnStatesICAO24ElementInvalid(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid ICAO 24-bit address for the `icao24` parameter');
+        $client->getOwnStates(['icao24' => ['32abfa', 'badvalue']]);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if the `time` parameter is not an integer.
+     */
+    public function testgetOwnStatesTimeWrongType(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid int value for the `time` parameter');
+        $client->getOwnStates(['time' => '1554986109']);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if the `time` parameter is more than 1 hour in the past.
+     */
+    public function testgetOwnStatesTimeTooLow(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is more than 1 hour in the past for the `time` parameter');
+        $client->getOwnStates(['time' => 1500000000]);
+    }
+
+    /**
+     * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `icao24` parameter is not an array.
      */
     public function testGetStatesICAO24WrongType(): void
