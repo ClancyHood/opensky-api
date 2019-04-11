@@ -8,8 +8,7 @@
         "symfony/validator": "^4.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.1",
-        "victorjonsson/markdowndocs": "^1.3"
+        "phpunit/phpunit": "^8.1"
     },
     "autoload": {
         "psr-4": {
