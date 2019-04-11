@@ -317,7 +317,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         if (array_key_exists('time', $parameters)) {
             $violations->addAll($this->validator->validate($parameters['time'], [
                 new Type([
-                    'type'    => 'float',
+                    'type'    => 'int',
                     'message' => '{{ value }} is not a valid {{ type }} value for the `time` parameter.',
                 ]),
                 new GreaterThanOrEqual([
@@ -344,7 +344,9 @@ class OpenSkyApi implements OpenSkyApiInterface
             throw new \InvalidArgumentException($violation->getMessage());
         }
 
-        $parameters['icao24'] = array_map('strtolower', $parameters['icao24']);
+        if (array_key_exists('icao24', $parameters)) {
+            $parameters['icao24'] = array_map('strtolower', $parameters['icao24']);
+        }
 
         try {
             $response = $this->client->request('GET', '/api/states/own', ['query' => $parameters]);
@@ -466,7 +468,9 @@ class OpenSkyApi implements OpenSkyApiInterface
             throw new \InvalidArgumentException($violation->getMessage());
         }
 
-        $parameters['icao24'] = array_map('strtolower', $parameters['icao24']);
+        if (array_key_exists('icao24', $parameters)) {
+            $parameters['icao24'] = array_map('strtolower', $parameters['icao24']);
+        }
 
         try {
             $response = $this->client->request('GET', '/api/states/all', ['query' => $parameters]);
