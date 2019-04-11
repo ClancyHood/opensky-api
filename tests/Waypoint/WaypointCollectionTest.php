@@ -27,14 +27,36 @@ final class WaypointCollectionTest extends TestCase
 
     public function testGetEndTime(): void
     {
+        $waypointCollection = new WaypointCollection(['endTime' => 1552606604]);
+
+        $this->assertIsInt($waypointCollection->getEndTime());
+        $this->assertEquals(1552606604, $waypointCollection->getEndTime());
+
+        $waypointCollection = new WaypointCollection(['endTime' => '1552606604']);
+
+        $this->assertIsInt($waypointCollection->getEndTime());
+        $this->assertEquals(1552606604, $waypointCollection->getEndTime());
     }
 
     public function testGetICAO24(): void
     {
+        $waypointCollection = new WaypointCollection(['icao24' => '3c4b26']);
+
+        $this->assertIsString($waypointCollection->getICAO24());
+        $this->assertEquals('3c4b26', $waypointCollection->getICAO24());
     }
 
     public function testGetStartTime(): void
     {
+        $waypointCollection = new WaypointCollection(['startTime' => 1552601876]);
+
+        $this->assertIsInt($waypointCollection->getStartTime());
+        $this->assertEquals(1552601876, $waypointCollection->getStartTime());
+
+        $waypointCollection = new WaypointCollection(['startTime' => '1552601876']);
+
+        $this->assertIsInt($waypointCollection->getStartTime());
+        $this->assertEquals(1552601876, $waypointCollection->getStartTime());
     }
 
     public function testGetWaypoints(): void
