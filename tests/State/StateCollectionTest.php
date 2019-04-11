@@ -33,6 +33,11 @@ final class StateCollectionTest extends TestCase
 
         $this->assertIsInt($stateCollection->getTimestamp());
         $this->assertEquals(1554818330, $stateCollection->getTimestamp());
+
+        $stateCollection = new StateCollection(['time' => '1554818330']);
+
+        $this->assertIsInt($stateCollection->getTimestamp());
+        $this->assertEquals(1554818330, $stateCollection->getTimestamp());
     }
 
     public function testCountableInterface(): void
