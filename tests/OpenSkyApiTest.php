@@ -92,6 +92,30 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if the `serials` parameter is not an array.
+     */
+    public function testgetOwnStatesSerialsWrongType(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid array value for the `serials` parameter');
+        $client->getOwnStates(['serials' => 6746]);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getOwnStates() throws an exception if an element of the `serials` parameter is not a string.
+     */
+    public function testgetOwnStatesSerialsElementWrongType(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid int value for the `serials` parameter');
+        $client->getOwnStates(['serials' => [6746, '3747']]);
+    }
+
+    /**
+     * @depends testConstructor
      * @testdox Method getStates() throws an exception if the `icao24` parameter is not an array.
      */
     public function testGetStatesICAO24WrongType(): void
