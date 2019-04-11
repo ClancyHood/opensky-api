@@ -29,7 +29,7 @@ final class WaypointTest extends TestCase
         $waypoint = new Waypoint([4 => 87.0]);
 
         $this->assertIsFloat($waypoint->getHeading());
-        $this->assertEquals(87, $waypoint->getHeading());
+        $this->assertEquals(87.0, $waypoint->getHeading());
 
         $waypoint = new Waypoint([4 => null]);
 
