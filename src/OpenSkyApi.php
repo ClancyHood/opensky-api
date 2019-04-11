@@ -359,7 +359,11 @@ class OpenSkyApi implements OpenSkyApiInterface
         }
 
         if (array_key_exists('icao24', $parameters)) {
-            $parameters['icao24'] = array_map('strtolower', $parameters['icao24']);
+            $parameters['icao24'] = strtolower(implode(',', $parameters['icao24']));
+        }
+
+        if (array_key_exists('serials', $parameters)) {
+            $parameters['serials'] = implode(',', $parameters['serials']);
         }
 
         try {
@@ -494,7 +498,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         }
 
         if (array_key_exists('icao24', $parameters)) {
-            $parameters['icao24'] = array_map('strtolower', $parameters['icao24']);
+            $parameters['icao24'] = strtolower(implode(',', $parameters['icao24']));
         }
 
         try {
