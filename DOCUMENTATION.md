@@ -36,8 +36,8 @@ Returns all flights for a given time interval.
 ##### Parameters
 | Parameter | Type | Description                                                  |
 | --------- | ---- | ------------------------------------------------------------ |
-| $begin    | int  | The timestamp corresponding to the begining of the time interval. |
-| $end      | int  | The timestamp corresponding to the end of the time interval. |
+| $begin    | int  | The timestamp corresponding to the begining of the time interval. See the *Limitations* section below. |
+| $end      | int  | The timestamp corresponding to the end of the time interval. See the *Limitations* section below. |
 
 ##### Returned value
 
@@ -71,8 +71,8 @@ Returns flighs for a particular aircraft which departed or arrived within a give
 | Parameter | Type   | Description                                                  |
 | --------- | ------ | ------------------------------------------------------------ |
 | $icao24   | string | The ICAO 24-bit address of the aircraft, in hexadecimal string representation. |
-| $begin    | int    | The timestamp corresponding to the begining of the time interval. |
-| $end      | int    | The timestamp corresponding to the end of the time interval. |
+| $begin    | int    | The timestamp corresponding to the begining of the time interval. See the *Limitations* section below. |
+| $end      | int    | The timestamp corresponding to the end of the time interval. See the *Limitations* section below. |
 
 ##### Returned value
 
@@ -106,8 +106,8 @@ Returns flights which arrived at a certain airport within a given time interval.
 | Parameter | Type   | Description                                                  |
 | --------- | ------ | ------------------------------------------------------------ |
 | $airport  | string | The ICAO code of the airport.                                |
-| $begin    | int    | The timestamp corresponding to the begining of the time interval. |
-| $end      | int    | The timestamp corresponding to the end of the time interval. |
+| $begin    | int    | The timestamp corresponding to the begining of the time interval. See the *Limitations* section below. |
+| $end      | int    | The timestamp corresponding to the end of the time interval. See the *Limitations* section below. |
 
 ##### Returned value
 
@@ -142,8 +142,8 @@ Returns flights which departed from a certain airport within a given time interv
 | Parameter | Type   | Description                                                  |
 | --------- | ------ | ------------------------------------------------------------ |
 | $airport  | string | The ICAO code of the airport.                                |
-| $begin    | int    | The timestamp corresponding to the begining of the time interval. |
-| $end      | int    | The timestamp corresponding to the end of the time interval. |
+| $begin    | int    | The timestamp corresponding to the begining of the time interval. See the *Limitations* section below. |
+| $end      | int    | The timestamp corresponding to the end of the time interval. See the *Limitations* section below. |
 
 ##### Returned value
 
@@ -184,14 +184,14 @@ Returns a collection of state vectors.
 
 The following key/value pairs are accepted:
 
-| Key      | Type     | Description |
-| -------- | -------- | ----------- |
-| *icao24* | string[] |             |
-| *time*   | int      |             |
-| *lamin*  | float    |             |
-| *lomin*  | float    |             |
-| *lamax*  | float    |             |
-| *lomax*  | float    |             |
+| Key      | Type     | Description                                                  |
+| -------- | -------- | ------------------------------------------------------------ |
+| *icao24* | string[] | The ICAO 24-bit address of each aircraft to retrieve the state vectors for, in hexadecimal string representation. |
+| *time*   | int      | The timestamp to retrieve the state vectors for. See the *Limitations* section below. |
+| *lamin*  | float    | The lower bound for the latitude, in decimal degrees.        |
+| *lomin*  | float    | The lower bound for the longitude, in decimal degrees.       |
+| *lamax*  | float    | The upper bound for the latitude, in decimal degrees.        |
+| *lomax*  | float    | The upper bound for the longitude, in decimal degrees.       |
 
 ##### Returned value
 
@@ -231,11 +231,11 @@ Returns a collection of state vectors, limited to your own sensors.
 
 The following key/value pairs are accepted:
 
-| Key       | Type     | Description |
-| --------- | -------- | ----------- |
-| *icao24*  | string[] |             |
-| *time*    | int      |             |
-| *serials* | int[]    |             |
+| Key       | Type     | Description                                                  |
+| --------- | -------- | ------------------------------------------------------------ |
+| *icao24*  | string[] | The ICAO 24-bit address of each aircraft to retrieve the state vectors for, in hexadecimal string representation. |
+| *time*    | int      | The timestamp to retrieve the state vectors for.             |
+| *serials* | int[]    | The serial number of each sensor to retrieve the state vectors for. |
 
 ##### Returned value
 
@@ -271,7 +271,7 @@ Returns a collection of waypoints for a certain aircraft, at a given time.
 | Parameter | Type      | Description                                                  |
 | --------- | --------- | ------------------------------------------------------------ |
 | $icao24   | string    | The ICAO 24-bit address of the aircraft, in hexadecimal string representation. |
-| $time     | int\|null | An optional timestamp.                                       |
+| $time     | int\|null | An optional timestamp. See the *Limitations* section below.  |
 
 *$time*
 
