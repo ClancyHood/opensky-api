@@ -1,5 +1,10 @@
 <?php
 /**
+ * @author  Jérémie BROUTIER <jeremie.broutier@gmail.com>
+ * @license MIT
+ */
+
+/**
  * @noinspection PhpUnhandledExceptionInspection
  */
 
@@ -8,6 +13,10 @@ namespace OpenSkyApi\Tests;
 use OpenSkyApi\OpenSkyApi;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class OpenSkyApiTest
+ * @package OpenSkyApi\Tests
+ */
 final class OpenSkyApiTest extends TestCase
 {
     /**

@@ -1,10 +1,18 @@
 <?php
+/**
+ * @author  Jérémie BROUTIER <jeremie.broutier@gmail.com>
+ * @license MIT
+ */
 
 namespace OpenSkyApi\Tests\State;
 
 use OpenSkyApi\State\State;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class StateTest
+ * @package OpenSkyApi\Tests\State
+ */
 final class StateTest extends TestCase
 {
     /**

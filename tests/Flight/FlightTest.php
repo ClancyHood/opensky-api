@@ -1,10 +1,18 @@
 <?php
+/**
+ * @author  Jérémie BROUTIER <jeremie.broutier@gmail.com>
+ * @license MIT
+ */
 
 namespace OpenSkyApi\Tests\Flight;
 
 use OpenSkyApi\Flight\Flight;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class FlightTest
+ * @package OpenSkyApi\Tests\Flight
+ */
 final class FlightTest extends TestCase
 {
     /**

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author  Jérémie BROUTIER <jeremie.broutier@gmail.com>
+ * @license MIT
+ */
 
 namespace OpenSkyApi\Tests\Waypoint;
 
@@ -6,6 +10,10 @@ use OpenSkyApi\Waypoint\WaypointCollection;
 use OpenSkyApi\Waypoint\WaypointInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class WaypointCollectionTest
+ * @package OpenSkyApi\Tests\Waypoint
+ */
 final class WaypointCollectionTest extends TestCase
 {
     /**

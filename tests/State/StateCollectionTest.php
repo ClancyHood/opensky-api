@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author  Jérémie BROUTIER <jeremie.broutier@gmail.com>
+ * @license MIT
+ */
 
 namespace OpenSkyApi\Tests\State;
 
@@ -6,6 +10,10 @@ use OpenSkyApi\State\StateCollection;
 use OpenSkyApi\State\StateInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class StateCollectionTest
+ * @package OpenSkyApi\Tests\State
+ */
 final class StateCollectionTest extends TestCase
 {
     /**
