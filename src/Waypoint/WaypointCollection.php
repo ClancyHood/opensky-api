@@ -46,7 +46,11 @@ class WaypointCollection implements WaypointCollectionInterface, \Countable, \It
      */
     public function getCallsign(): ?string
     {
-        return $this->data['callsign'];
+        if (!is_null($this->data['callsign'])) {
+            return strval($this->data['callsign']);
+        }
+
+        return null;
     }
 
     /**
@@ -54,7 +58,7 @@ class WaypointCollection implements WaypointCollectionInterface, \Countable, \It
      */
     public function getEndTime(): int
     {
-        return $this->data['endTime'];
+        return intval($this->data['endTime']);
     }
 
     /**
@@ -62,7 +66,7 @@ class WaypointCollection implements WaypointCollectionInterface, \Countable, \It
      */
     public function getICAO24(): string
     {
-        return $this->data['icao24'];
+        return strval($this->data['icao24']);
     }
 
     /**
@@ -70,7 +74,7 @@ class WaypointCollection implements WaypointCollectionInterface, \Countable, \It
      */
     public function getStartTime(): int
     {
-        return $this->data['startTime'];
+        return intval($this->data['startTime']);
     }
 
     /**

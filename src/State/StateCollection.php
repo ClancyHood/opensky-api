@@ -54,7 +54,7 @@ class StateCollection implements StateCollectionInterface, \Countable, \Iterator
      */
     public function getTimestamp(): int
     {
-        return $this->data['time'];
+        return intval($this->data['time']);
     }
 
     public function count(): int

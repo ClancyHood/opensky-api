@@ -28,7 +28,11 @@ class Waypoint implements WaypointInterface
      */
     public function getBarometricAltitude(): ?float
     {
-        return $this->data[3];
+        if (!is_null($this->data[3])) {
+            return floatval($this->data[3]);
+        }
+
+        return null;
     }
 
     /**
@@ -36,7 +40,11 @@ class Waypoint implements WaypointInterface
      */
     public function getHeading(): ?float
     {
-        return $this->data[4];
+        if (!is_null($this->data[4])) {
+            return floatval($this->data[4]);
+        }
+
+        return null;
     }
 
     /**
@@ -44,7 +52,11 @@ class Waypoint implements WaypointInterface
      */
     public function getLatitude(): ?float
     {
-        return $this->data[1];
+        if (!is_null($this->data[1])) {
+            return floatval($this->data[1]);
+        }
+
+        return null;
     }
 
     /**
@@ -52,7 +64,11 @@ class Waypoint implements WaypointInterface
      */
     public function getLongitude(): ?float
     {
-        return $this->data[2];
+        if (!is_null($this->data[2])) {
+            return floatval($this->data[2]);
+        }
+
+        return null;
     }
 
     /**
@@ -60,7 +76,7 @@ class Waypoint implements WaypointInterface
      */
     public function getTime(): int
     {
-        return $this->data[0];
+        return intval($this->data[0]);
     }
 
     /**
@@ -68,6 +84,6 @@ class Waypoint implements WaypointInterface
      */
     public function isOnGround(): bool
     {
-        return $this->data[5];
+        return boolval($this->data[5]);
     }
 }

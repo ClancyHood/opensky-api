@@ -28,7 +28,11 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirport(): ?string
     {
-        return $this->data['estArrivalAirport'];
+        if (!is_null($this->data['estArrivalAirport'])) {
+            return strval($this->data['estArrivalAirport']);
+        }
+
+        return null;
     }
 
     /**
@@ -36,7 +40,7 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirportCandidatesCount(): int
     {
-        return $this->data['arrivalAirportCandidatesCount'];
+        return intval($this->data['arrivalAirportCandidatesCount']);
     }
 
     /**
@@ -44,7 +48,11 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirportHorizontalDistance(): ?int
     {
-        return $this->data['estArrivalAirportHorizDistance'];
+        if (!is_null($this->data['estArrivalAirportHorizDistance'])) {
+            return intval($this->data['estArrivalAirportHorizDistance']);
+        }
+
+        return null;
     }
 
     /**
@@ -52,7 +60,11 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirportVerticalDistance(): ?int
     {
-        return $this->data['estArrivalAirportVertDistance'];
+        if (!is_null($this->data['estArrivalAirportVertDistance'])) {
+            return intval($this->data['estArrivalAirportVertDistance']);
+        }
+
+        return null;
     }
 
     /**
@@ -60,7 +72,7 @@ class Flight implements FlightInterface
      */
     public function getArrivalTime(): int
     {
-        return $this->data['lastSeen'];
+        return intval($this->data['lastSeen']);
     }
 
     /**
@@ -68,7 +80,11 @@ class Flight implements FlightInterface
      */
     public function getCallsign(): ?string
     {
-        return $this->data['callsign'];
+        if (!is_null($this->data['callsign'])) {
+            return strval($this->data['callsign']);
+        }
+
+        return null;
     }
 
     /**
@@ -76,7 +92,11 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirport(): ?string
     {
-        return $this->data['estDepartureAirport'];
+        if (!is_null($this->data['estDepartureAirport'])) {
+            return strval($this->data['estDepartureAirport']);
+        }
+
+        return null;
     }
 
     /**
@@ -84,7 +104,7 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirportCandidatesCount(): int
     {
-        return $this->data['departureAirportCandidatesCount'];
+        return intval($this->data['departureAirportCandidatesCount']);
     }
 
     /**
@@ -92,7 +112,11 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirportHorizontalDistance(): ?int
     {
-        return $this->data['estDepartureAirportHorizDistance'];
+        if (!is_null($this->data['estDepartureAirportHorizDistance'])) {
+            return intval($this->data['estDepartureAirportHorizDistance']);
+        }
+
+        return null;
     }
 
     /**
@@ -100,7 +124,11 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirportVerticalDistance(): ?int
     {
-        return $this->data['estDepartureAirportVertDistance'];
+        if (!is_null($this->data['estDepartureAirportVertDistance'])) {
+            return intval($this->data['estDepartureAirportVertDistance']);
+        }
+
+        return null;
     }
 
     /**
@@ -108,7 +136,7 @@ class Flight implements FlightInterface
      */
     public function getDepartureTime(): int
     {
-        return $this->data['firstSeen'];
+        return intval($this->data['firstSeen']);
     }
 
     /**
@@ -116,6 +144,6 @@ class Flight implements FlightInterface
      */
     public function getICAO24(): string
     {
-        return $this->data['icao24'];
+        return strval($this->data['icao24']);
     }
 }

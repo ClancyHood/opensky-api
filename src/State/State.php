@@ -28,7 +28,11 @@ class State implements StateInterface
      */
     public function getBarometricAltitude(): ?float
     {
-        return $this->data[7];
+        if (!is_null($this->data[7])) {
+            return floatval($this->data[7]);
+        }
+
+        return null;
     }
 
     /**
@@ -36,7 +40,11 @@ class State implements StateInterface
      */
     public function getCallsign(): ?string
     {
-        return $this->data[1];
+        if (!is_null($this->data[1])) {
+            return strval($this->data[1]);
+        }
+
+        return null;
     }
 
     /**
@@ -44,7 +52,11 @@ class State implements StateInterface
      */
     public function getGeometricAltitude(): ?float
     {
-        return $this->data[13];
+        if (!is_null($this->data[13])) {
+            return floatval($this->data[13]);
+        }
+
+        return null;
     }
 
     /**
@@ -52,7 +64,11 @@ class State implements StateInterface
      */
     public function getGroundSpeed(): ?float
     {
-        return $this->data[9];
+        if (!is_null($this->data[9])) {
+            return floatval($this->data[9]);
+        }
+
+        return null;
     }
 
     /**
@@ -60,7 +76,11 @@ class State implements StateInterface
      */
     public function getHeading(): ?float
     {
-        return $this->data[10];
+        if (!is_null($this->data[10])) {
+            return floatval($this->data[10]);
+        }
+
+        return null;
     }
 
     /**
@@ -68,7 +88,7 @@ class State implements StateInterface
      */
     public function getICAO24(): string
     {
-        return $this->data[0];
+        return strval($this->data[0]);
     }
 
     /**
@@ -76,7 +96,7 @@ class State implements StateInterface
      */
     public function getLastContact(): int
     {
-        return $this->data[4];
+        return intval($this->data[4]);
     }
 
     /**
@@ -84,7 +104,11 @@ class State implements StateInterface
      */
     public function getLatitude(): ?float
     {
-        return $this->data[6];
+        if (!is_null($this->data[6])) {
+            return floatval($this->data[6]);
+        }
+
+        return null;
     }
 
     /**
@@ -92,7 +116,11 @@ class State implements StateInterface
      */
     public function getLongitude(): ?float
     {
-        return $this->data[5];
+        if (!is_null($this->data[5])) {
+            return floatval($this->data[5]);
+        }
+
+        return null;
     }
 
     /**
@@ -100,7 +128,7 @@ class State implements StateInterface
      */
     public function isOnGround(): bool
     {
-        return $this->data[8];
+        return boolval($this->data[8]);
     }
 
     /**
@@ -108,7 +136,7 @@ class State implements StateInterface
      */
     public function getOriginCountry(): string
     {
-        return $this->data[2];
+        return strval($this->data[2]);
     }
 
     /**
@@ -116,7 +144,7 @@ class State implements StateInterface
      */
     public function getPositionSource(): int
     {
-        return $this->data[16];
+        return intval($this->data[16]);
     }
 
     /**
@@ -124,7 +152,7 @@ class State implements StateInterface
      */
     public function getSensors(): array
     {
-        return (array)$this->data[12];
+        return array_map('intval', (array)$this->data[12]);
     }
 
     /**
@@ -132,7 +160,7 @@ class State implements StateInterface
      */
     public function isSpi(): bool
     {
-        return $this->data[15];
+        return boolval($this->data[15]);
     }
 
     /**
@@ -140,7 +168,11 @@ class State implements StateInterface
      */
     public function getSquawk(): ?string
     {
-        return $this->data[14];
+        if (!is_null($this->data[14])) {
+            return strval($this->data[14]);
+        }
+
+        return null;
     }
 
     /**
@@ -148,7 +180,11 @@ class State implements StateInterface
      */
     public function getTimePosition(): ?int
     {
-        return $this->data[3];
+        if (!is_null($this->data[3])) {
+            return intval($this->data[3]);
+        }
+
+        return null;
     }
 
     /**
@@ -156,6 +192,10 @@ class State implements StateInterface
      */
     public function getVerticalSpeed(): ?float
     {
-        return $this->data[11];
+        if (!is_null($this->data[11])) {
+            return floatval($this->data[11]);
+        }
+
+        return null;
     }
 }
