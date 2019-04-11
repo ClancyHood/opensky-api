@@ -20,6 +20,54 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
+     * @testdox Method getFlights() throws an exception if the time interval is greater than 2 hours.
+     */
+    public function testGetFlightsInvalidTimeInterval(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('time interval exceeds the maximum allowed');
+        $client->getFlights(1500000000, 1500007201);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByAircraft() throws an exception if the `icao24` parameter is empty.
+     */
+    public function testGetFlightsByAircraftICAO24Empty(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('empty value is not allowed for the `icao24` parameter');
+        $client->getFlightsByAircraft('', 1500000000, 1500000000);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByAircraft() throws an exception if the `icao24` parameter is invalid.
+     */
+    public function testGetFlightsByAircraftICAO24Invalid(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('is not a valid ICAO 24-bit address for the `icao24` parameter');
+        $client->getFlightsByAircraft('badvalue', 1500000000, 1500000000);
+    }
+
+    /**
+     * @depends testConstructor
+     * @testdox Method getFlightsByAircraft() throws an exception if the time interval is greater than 30 days.
+     */
+    public function testGetFlightsByAircraftInvalidTimeInterval(): void
+    {
+        $client = new OpenSkyApi();
+
+        $this->expectExceptionMessage('time interval exceeds the maximum allowed');
+        $client->getFlightsByAircraft('3c6444', 1500000000, 1502592001);
+    }
+
+    /**
+     * @depends testConstructor
      * @testdox Method getOwnStates() throws an exception if the `icao24` parameter is not an array.
      */
     public function testgetOwnStatesICAO24WrongType(): void
@@ -56,7 +104,7 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
-     * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is not a valid ICAO 24-bit address.
+     * @testdox Method getOwnStates() throws an exception if an element of the `icao24` parameter is invalid.
      */
     public function testgetOwnStatesICAO24ElementInvalid(): void
     {
@@ -152,7 +200,7 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
-     * @testdox Method getStates() throws an exception if an element of the `icao24` parameter is not a valid ICAO 24-bit address.
+     * @testdox Method getStates() throws an exception if an element of the `icao24` parameter is invalid.
      */
     public function testGetStatesICAO24ElementInvalid(): void
     {
@@ -344,7 +392,7 @@ final class OpenSkyApiTest extends TestCase
 
     /**
      * @depends testConstructor
-     * @testdox Method getTrack() throws an exception if the `icao24` parameter is not a valid ICAO 24-bit address.
+     * @testdox Method getTrack() throws an exception if the `icao24` parameter is invalid.
      */
     public function testGetTrackICAO24Invalid(): void
     {
