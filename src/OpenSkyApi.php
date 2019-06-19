@@ -247,7 +247,6 @@ class OpenSkyApi implements OpenSkyApiInterface
                 'message' => 'An empty value is not allowed for the `airport` parameter.',
             ]),
             new IcaoAirportCode([
-                'pattern' => '/^[a-z]{4}$/i',
                 'message' => '{{ value }} is not a valid ICAO airport code for the `airport` parameter.',
             ]),
         ]));
