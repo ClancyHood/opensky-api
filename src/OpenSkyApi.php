@@ -8,11 +8,14 @@ namespace OpenSkyApi;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use InvalidArgumentException;
 use OpenSkyApi\Exception\AuthenticationRequiredException;
 use OpenSkyApi\Exception\BadCredentialsException;
 use OpenSkyApi\Flight\Flight;
 use OpenSkyApi\State\StateCollection;
 use OpenSkyApi\State\StateCollectionInterface;
+use OpenSkyApi\Validator\Constraints\Icao24bitAddress;
+use OpenSkyApi\Validator\Constraints\IcaoAirportCode;
 use OpenSkyApi\Waypoint\WaypointCollection;
 use OpenSkyApi\Waypoint\WaypointCollectionInterface;
 use Symfony\Component\Validator\Constraints\All;
@@ -76,7 +79,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         ]));
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         $query = [
@@ -122,8 +125,7 @@ class OpenSkyApi implements OpenSkyApiInterface
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `icao24` parameter.',
             ]),
-            new Regex([
-                'pattern' => '/^[a-f0-9]{6}$/i',
+            new Icao24bitAddress([
                 'message' => '{{ value }} is not a valid ICAO 24-bit address for the `icao24` parameter.',
             ]),
         ]));
@@ -136,7 +138,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         ]));
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         $query = [
@@ -183,8 +185,7 @@ class OpenSkyApi implements OpenSkyApiInterface
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `airport` parameter.',
             ]),
-            new Regex([
-                'pattern' => '/^[a-z]{4}$/i',
+            new IcaoAirportCode([
                 'message' => '{{ value }} is not a valid ICAO airport code for the `airport` parameter.',
             ]),
         ]));
@@ -197,7 +198,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         ]));
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         $query = [
@@ -219,7 +220,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -258,7 +259,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         ]));
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         $query = [
@@ -317,8 +318,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                             'type'    => 'string',
                             'message' => '{{ value }} is not a valid {{ type }} value for the `icao24` parameter.',
                         ]),
-                        new Regex([
-                            'pattern' => '/^[a-f0-9]{6}$/i',
+                        new Icao24bitAddress([
                             'message' => '{{ value }} is not a valid ICAO 24-bit address for the `icao24` parameter.',
                         ]),
                     ],
@@ -360,7 +360,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         }
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         if (array_key_exists('icao24', $parameters)) {
@@ -416,8 +416,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                             'type'    => 'string',
                             'message' => '{{ value }} is not a valid {{ type }} value for the `icao24` parameter.',
                         ]),
-                        new Regex([
-                            'pattern' => '/^[a-f0-9]{6}$/i',
+                        new Icao24bitAddress([
                             'message' => '{{ value }} is not a valid ICAO 24-bit address for the `icao24` parameter.',
                         ]),
                     ],
@@ -499,7 +498,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         }
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         if (array_key_exists('icao24', $parameters)) {
@@ -535,8 +534,7 @@ class OpenSkyApi implements OpenSkyApiInterface
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `icao24` parameter.',
             ]),
-            new Regex([
-                'pattern' => '/^[a-f0-9]{6}$/i',
+            new Icao24bitAddress([
                 'message' => '{{ value }} is not a valid ICAO 24-bit address for the `icao24` parameter.',
             ]),
         ]));
@@ -549,7 +547,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         ]));
 
         foreach ($violations as $violation) {
-            throw new \InvalidArgumentException($violation->getMessage());
+            throw new InvalidArgumentException($violation->getMessage());
         }
 
         try {
