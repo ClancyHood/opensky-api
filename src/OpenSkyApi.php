@@ -70,7 +70,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getFlights(int $begin, int $end): array
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
         $violations->addAll($this->validator->validate($end - $begin, [
             new LessThanOrEqual([
                 'value'   => 7200,
@@ -120,7 +120,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getFlightsByAircraft(string $icao24, int $begin, int $end): array
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
         $violations->addAll($this->validator->validate($icao24, [
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `icao24` parameter.',
@@ -180,7 +180,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getFlightsByArrivalAirport(string $airport, int $begin, int $end): array
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
         $violations->addAll($this->validator->validate($airport, [
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `airport` parameter.',
@@ -240,7 +240,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getFlightsByDepartureAirport(string $airport, int $begin, int $end): array
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
         $violations->addAll($this->validator->validate($airport, [
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `airport` parameter.',
@@ -301,7 +301,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getOwnStates(array $parameters = []): StateCollectionInterface
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
 
         if (array_key_exists('icao24', $parameters)) {
             $violations->addAll($this->validator->validate($parameters['icao24'], [
@@ -399,7 +399,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getStates(array $parameters = []): StateCollectionInterface
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
 
         if (array_key_exists('icao24', $parameters)) {
             $violations->addAll($this->validator->validate($parameters['icao24'], [
@@ -529,7 +529,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function getTrack(string $icao24, int $time = null): ?WaypointCollectionInterface
     {
-        $violations = new ConstraintViolationList();
+        $violations = new ConstraintViolationList;
         $violations->addAll($this->validator->validate($icao24, [
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `icao24` parameter.',
