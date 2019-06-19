@@ -6,14 +6,12 @@
 
 namespace OpenSkyApi\Exception;
 
-use RuntimeException;
-
 /**
  * Class AuthenticationException
  *
  * @package OpenSkyApi\Exception
  */
-class Exception extends RuntimeException
+class Exception extends \Exception
 {
 
 }
