@@ -8,6 +8,7 @@ namespace OpenSkyApi\State;
 
 /**
  * Class StateCollection
+ *
  * @package OpenSkyApi\State
  */
 class StateCollection implements StateCollectionInterface, \Countable, \Iterator

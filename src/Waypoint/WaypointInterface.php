@@ -8,6 +8,7 @@ namespace OpenSkyApi\Waypoint;
 
 /**
  * Interface WaypointInterface
+ *
  * @package OpenSkyApi\Waypoint
  */
 interface WaypointInterface

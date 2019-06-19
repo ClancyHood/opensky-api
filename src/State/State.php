@@ -8,6 +8,7 @@ namespace OpenSkyApi\State;
 
 /**
  * Class State
+ *
  * @package OpenSkyApi\State
  */
 class State implements StateInterface
@@ -32,7 +33,7 @@ class State implements StateInterface
      */
     public function getBarometricAltitude(): ?float
     {
-        if (!is_null($this->data[7])) {
+        if ( ! is_null($this->data[7])) {
             return floatval($this->data[7]);
         }
 
@@ -44,7 +45,7 @@ class State implements StateInterface
      */
     public function getCallsign(): ?string
     {
-        if (!is_null($this->data[1])) {
+        if ( ! is_null($this->data[1])) {
             return strval($this->data[1]);
         }
 
@@ -56,7 +57,7 @@ class State implements StateInterface
      */
     public function getGeometricAltitude(): ?float
     {
-        if (!is_null($this->data[13])) {
+        if ( ! is_null($this->data[13])) {
             return floatval($this->data[13]);
         }
 
@@ -68,7 +69,7 @@ class State implements StateInterface
      */
     public function getGroundSpeed(): ?float
     {
-        if (!is_null($this->data[9])) {
+        if ( ! is_null($this->data[9])) {
             return floatval($this->data[9]);
         }
 
@@ -80,7 +81,7 @@ class State implements StateInterface
      */
     public function getHeading(): ?float
     {
-        if (!is_null($this->data[10])) {
+        if ( ! is_null($this->data[10])) {
             return floatval($this->data[10]);
         }
 
@@ -108,7 +109,7 @@ class State implements StateInterface
      */
     public function getLatitude(): ?float
     {
-        if (!is_null($this->data[6])) {
+        if ( ! is_null($this->data[6])) {
             return floatval($this->data[6]);
         }
 
@@ -120,7 +121,7 @@ class State implements StateInterface
      */
     public function getLongitude(): ?float
     {
-        if (!is_null($this->data[5])) {
+        if ( ! is_null($this->data[5])) {
             return floatval($this->data[5]);
         }
 
@@ -172,7 +173,7 @@ class State implements StateInterface
      */
     public function getSquawk(): ?string
     {
-        if (!is_null($this->data[14])) {
+        if ( ! is_null($this->data[14])) {
             return strval($this->data[14]);
         }
 
@@ -184,7 +185,7 @@ class State implements StateInterface
      */
     public function getTimePosition(): ?int
     {
-        if (!is_null($this->data[3])) {
+        if ( ! is_null($this->data[3])) {
             return intval($this->data[3]);
         }
 
@@ -196,7 +197,7 @@ class State implements StateInterface
      */
     public function getVerticalSpeed(): ?float
     {
-        if (!is_null($this->data[11])) {
+        if ( ! is_null($this->data[11])) {
             return floatval($this->data[11]);
         }
 

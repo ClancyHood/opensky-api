@@ -50,7 +50,7 @@ class WaypointCollection implements WaypointCollectionInterface, \Countable, \It
      */
     public function getCallsign(): ?string
     {
-        if (!is_null($this->data['callsign'])) {
+        if ( ! is_null($this->data['callsign'])) {
             return strval($this->data['callsign']);
         }
 

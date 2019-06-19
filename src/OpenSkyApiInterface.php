@@ -6,6 +6,8 @@
 
 namespace OpenSkyApi;
 
+use Exception;
+use InvalidArgumentException;
 use OpenSkyApi\Exception\AuthenticationRequiredException;
 use OpenSkyApi\Exception\BadCredentialsException;
 use OpenSkyApi\Flight\FlightInterface;
@@ -14,6 +16,7 @@ use OpenSkyApi\Waypoint\WaypointCollectionInterface;
 
 /**
  * Interface OpenSkyApiInterface
+ *
  * @package OpenSkyApi
  */
 interface OpenSkyApiInterface
@@ -35,8 +38,8 @@ interface OpenSkyApiInterface
      * @return FlightInterface[]
      *
      * @throws BadCredentialsException   If the provided credentials are invalid.
-     * @throws \InvalidArgumentException If any parameter is invalid.
-     * @throws \Exception                If any other error occurs.
+     * @throws InvalidArgumentException If any parameter is invalid.
+     * @throws Exception                If any other error occurs.
      */
     public function getFlights(int $begin, int $end): array;
 
@@ -50,8 +53,8 @@ interface OpenSkyApiInterface
      * @return FlightInterface[]
      *
      * @throws BadCredentialsException   If the provided credentials are invalid.
-     * @throws \InvalidArgumentException If any parameter is invalid.
-     * @throws \Exception                If any other error occurs.
+     * @throws InvalidArgumentException If any parameter is invalid.
+     * @throws Exception                If any other error occurs.
      */
     public function getFlightsByAircraft(string $icao24, int $begin, int $end): array;
 
@@ -65,8 +68,8 @@ interface OpenSkyApiInterface
      * @return FlightInterface[]
      *
      * @throws BadCredentialsException   If the provided credentials are invalid.
-     * @throws \InvalidArgumentException If any parameter is invalid.
-     * @throws \Exception                If any other error occurs.
+     * @throws InvalidArgumentException If any parameter is invalid.
+     * @throws Exception                If any other error occurs.
      */
     public function getFlightsByArrivalAirport(string $airport, int $begin, int $end): array;
 
@@ -80,8 +83,8 @@ interface OpenSkyApiInterface
      * @return FlightInterface[]
      *
      * @throws BadCredentialsException   If the provided credentials are invalid.
-     * @throws \InvalidArgumentException If any parameter is invalid.
-     * @throws \Exception                If any other error occurs.
+     * @throws InvalidArgumentException If any parameter is invalid.
+     * @throws Exception                If any other error occurs.
      */
     public function getFlightsByDepartureAirport(string $airport, int $begin, int $end): array;
 
@@ -93,8 +96,8 @@ interface OpenSkyApiInterface
      * @return StateCollectionInterface
      *
      * @throws BadCredentialsException   If the provided credentials are invalid.
-     * @throws \InvalidArgumentException If any parameter is invalid.
-     * @throws \Exception                If any other error occurs.
+     * @throws InvalidArgumentException If any parameter is invalid.
+     * @throws Exception                If any other error occurs.
      */
     public function getStates(array $parameters = []): StateCollectionInterface;
 
@@ -107,8 +110,8 @@ interface OpenSkyApiInterface
      *
      * @throws AuthenticationRequiredException If no credentials were provided.
      * @throws BadCredentialsException         If the provided credentials are invalid.
-     * @throws \InvalidArgumentException       If any parameter is invalid.
-     * @throws \Exception                      If any other error occurs.
+     * @throws InvalidArgumentException       If any parameter is invalid.
+     * @throws Exception                      If any other error occurs.
      */
     public function getOwnStates(array $parameters = []): StateCollectionInterface;
 
@@ -123,8 +126,8 @@ interface OpenSkyApiInterface
      * @return WaypointCollectionInterface|null A collection of waypoints, or null if no data is available.
      *
      * @throws BadCredentialsException   If the provided credentials are invalid.
-     * @throws \InvalidArgumentException If any parameter is invalid.
-     * @throws \Exception                If any other error occurs.
+     * @throws InvalidArgumentException If any parameter is invalid.
+     * @throws Exception                If any other error occurs.
      */
     public function getTrack(string $icao24, int $time = null): ?WaypointCollectionInterface;
 

@@ -8,6 +8,7 @@ namespace OpenSkyApi\State;
 
 /**
  * Interface StateCollectionInterface
+ *
  * @package OpenSkyApi\State
  */
 interface StateCollectionInterface

@@ -27,6 +27,7 @@ use Symfony\Component\Validator\Validation;
 
 /**
  * Class OpenSkyApi
+ *
  * @package OpenSkyApi
  */
 class OpenSkyApi implements OpenSkyApiInterface
@@ -51,7 +52,7 @@ class OpenSkyApi implements OpenSkyApiInterface
      */
     public function __construct(string $username = null, string $password = null)
     {
-        $auth = (!is_null($username) and !is_null($password)) ? [$username, $password] : [];
+        $auth = ( ! is_null($username) and ! is_null($password)) ? [$username, $password] : [];
 
         $this->validator = Validation::createValidator();
         $this->client    = new Client([
@@ -589,6 +590,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
     /**
      * @param string $json
+     *
      * @return array
      * @throws \Exception
      */

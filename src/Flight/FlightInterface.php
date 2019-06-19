@@ -8,6 +8,7 @@ namespace OpenSkyApi\Flight;
 
 /**
  * Interface FlightInterface
+ *
  * @package OpenSkyApi\Flight
  */
 interface FlightInterface

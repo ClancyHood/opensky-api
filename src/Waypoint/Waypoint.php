@@ -8,6 +8,7 @@ namespace OpenSkyApi\Waypoint;
 
 /**
  * Class Waypoint
+ *
  * @package OpenSkyApi\Waypoint
  */
 class Waypoint implements WaypointInterface
@@ -32,7 +33,7 @@ class Waypoint implements WaypointInterface
      */
     public function getBarometricAltitude(): ?float
     {
-        if (!is_null($this->data[3])) {
+        if ( ! is_null($this->data[3])) {
             return floatval($this->data[3]);
         }
 
@@ -44,7 +45,7 @@ class Waypoint implements WaypointInterface
      */
     public function getHeading(): ?float
     {
-        if (!is_null($this->data[4])) {
+        if ( ! is_null($this->data[4])) {
             return floatval($this->data[4]);
         }
 
@@ -56,7 +57,7 @@ class Waypoint implements WaypointInterface
      */
     public function getLatitude(): ?float
     {
-        if (!is_null($this->data[1])) {
+        if ( ! is_null($this->data[1])) {
             return floatval($this->data[1]);
         }
 
@@ -68,7 +69,7 @@ class Waypoint implements WaypointInterface
      */
     public function getLongitude(): ?float
     {
-        if (!is_null($this->data[2])) {
+        if ( ! is_null($this->data[2])) {
             return floatval($this->data[2]);
         }
 

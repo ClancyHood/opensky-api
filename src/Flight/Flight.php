@@ -8,6 +8,7 @@ namespace OpenSkyApi\Flight;
 
 /**
  * Class Flight
+ *
  * @package OpenSkyApi\Flight
  */
 class Flight implements FlightInterface
@@ -32,7 +33,7 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirport(): ?string
     {
-        if (!is_null($this->data['estArrivalAirport'])) {
+        if ( ! is_null($this->data['estArrivalAirport'])) {
             return strval($this->data['estArrivalAirport']);
         }
 
@@ -52,7 +53,7 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirportHorizontalDistance(): ?int
     {
-        if (!is_null($this->data['estArrivalAirportHorizDistance'])) {
+        if ( ! is_null($this->data['estArrivalAirportHorizDistance'])) {
             return intval($this->data['estArrivalAirportHorizDistance']);
         }
 
@@ -64,7 +65,7 @@ class Flight implements FlightInterface
      */
     public function getArrivalAirportVerticalDistance(): ?int
     {
-        if (!is_null($this->data['estArrivalAirportVertDistance'])) {
+        if ( ! is_null($this->data['estArrivalAirportVertDistance'])) {
             return intval($this->data['estArrivalAirportVertDistance']);
         }
 
@@ -84,7 +85,7 @@ class Flight implements FlightInterface
      */
     public function getCallsign(): ?string
     {
-        if (!is_null($this->data['callsign'])) {
+        if ( ! is_null($this->data['callsign'])) {
             return strval($this->data['callsign']);
         }
 
@@ -96,7 +97,7 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirport(): ?string
     {
-        if (!is_null($this->data['estDepartureAirport'])) {
+        if ( ! is_null($this->data['estDepartureAirport'])) {
             return strval($this->data['estDepartureAirport']);
         }
 
@@ -116,7 +117,7 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirportHorizontalDistance(): ?int
     {
-        if (!is_null($this->data['estDepartureAirportHorizDistance'])) {
+        if ( ! is_null($this->data['estDepartureAirportHorizDistance'])) {
             return intval($this->data['estDepartureAirportHorizDistance']);
         }
 
@@ -128,7 +129,7 @@ class Flight implements FlightInterface
      */
     public function getDepartureAirportVerticalDistance(): ?int
     {
-        if (!is_null($this->data['estDepartureAirportVertDistance'])) {
+        if ( ! is_null($this->data['estDepartureAirportVertDistance'])) {
             return intval($this->data['estDepartureAirportVertDistance']);
         }
 
