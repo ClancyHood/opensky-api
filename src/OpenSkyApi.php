@@ -11,6 +11,7 @@ use GuzzleHttp\Exception\ClientException;
 use InvalidArgumentException;
 use OpenSkyApi\Exception\AuthenticationRequiredException;
 use OpenSkyApi\Exception\BadCredentialsException;
+use OpenSkyApi\Exception\Exception;
 use OpenSkyApi\Flight\Flight;
 use OpenSkyApi\State\StateCollection;
 use OpenSkyApi\State\StateCollectionInterface;
@@ -100,7 +101,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -160,7 +161,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -220,7 +221,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -281,7 +282,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -384,7 +385,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -514,7 +515,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -568,7 +569,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new \Exception($exception->getMessage(), $exception->getCode());
+                    throw new Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
@@ -597,7 +598,7 @@ class OpenSkyApi implements OpenSkyApiInterface
         try {
             return json_decode($json, true, 8, JSON_THROW_ON_ERROR);
         } catch (\JsonException $exception) {
-            throw new \Exception($exception->getMessage(), $exception->getCode(), $exception);
+            throw new Exception($exception->getMessage(), $exception->getCode(), $exception);
         }
     }
 }

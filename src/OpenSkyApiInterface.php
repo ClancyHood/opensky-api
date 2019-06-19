@@ -6,10 +6,10 @@
 
 namespace OpenSkyApi;
 
-use Exception;
 use InvalidArgumentException;
 use OpenSkyApi\Exception\AuthenticationRequiredException;
 use OpenSkyApi\Exception\BadCredentialsException;
+use OpenSkyApi\Exception\Exception;
 use OpenSkyApi\Flight\FlightInterface;
 use OpenSkyApi\State\StateCollectionInterface;
 use OpenSkyApi\Waypoint\WaypointCollectionInterface;
@@ -37,7 +37,7 @@ interface OpenSkyApiInterface
      *
      * @return FlightInterface[]
      *
-     * @throws BadCredentialsException   If the provided credentials are invalid.
+     * @throws BadCredentialsException  If the provided credentials are invalid.
      * @throws InvalidArgumentException If any parameter is invalid.
      * @throws Exception                If any other error occurs.
      */
@@ -52,7 +52,7 @@ interface OpenSkyApiInterface
      *
      * @return FlightInterface[]
      *
-     * @throws BadCredentialsException   If the provided credentials are invalid.
+     * @throws BadCredentialsException  If the provided credentials are invalid.
      * @throws InvalidArgumentException If any parameter is invalid.
      * @throws Exception                If any other error occurs.
      */
@@ -67,7 +67,7 @@ interface OpenSkyApiInterface
      *
      * @return FlightInterface[]
      *
-     * @throws BadCredentialsException   If the provided credentials are invalid.
+     * @throws BadCredentialsException  If the provided credentials are invalid.
      * @throws InvalidArgumentException If any parameter is invalid.
      * @throws Exception                If any other error occurs.
      */
@@ -82,7 +82,7 @@ interface OpenSkyApiInterface
      *
      * @return FlightInterface[]
      *
-     * @throws BadCredentialsException   If the provided credentials are invalid.
+     * @throws BadCredentialsException  If the provided credentials are invalid.
      * @throws InvalidArgumentException If any parameter is invalid.
      * @throws Exception                If any other error occurs.
      */
@@ -95,7 +95,7 @@ interface OpenSkyApiInterface
      *
      * @return StateCollectionInterface
      *
-     * @throws BadCredentialsException   If the provided credentials are invalid.
+     * @throws BadCredentialsException  If the provided credentials are invalid.
      * @throws InvalidArgumentException If any parameter is invalid.
      * @throws Exception                If any other error occurs.
      */
@@ -110,8 +110,8 @@ interface OpenSkyApiInterface
      *
      * @throws AuthenticationRequiredException If no credentials were provided.
      * @throws BadCredentialsException         If the provided credentials are invalid.
-     * @throws InvalidArgumentException       If any parameter is invalid.
-     * @throws Exception                      If any other error occurs.
+     * @throws InvalidArgumentException        If any parameter is invalid.
+     * @throws Exception                       If any other error occurs.
      */
     public function getOwnStates(array $parameters = []): StateCollectionInterface;
 
@@ -125,7 +125,7 @@ interface OpenSkyApiInterface
      *
      * @return WaypointCollectionInterface|null A collection of waypoints, or null if no data is available.
      *
-     * @throws BadCredentialsException   If the provided credentials are invalid.
+     * @throws BadCredentialsException  If the provided credentials are invalid.
      * @throws InvalidArgumentException If any parameter is invalid.
      * @throws Exception                If any other error occurs.
      */
