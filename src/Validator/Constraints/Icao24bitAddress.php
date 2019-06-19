@@ -2,6 +2,7 @@
 
 namespace OpenSkyApi\Validator\Constraints;
 
+use OpenSkyApi\Validator\Icao24bitAddressValidator;
 use Symfony\Component\Validator\Constraint;
 
 /**
@@ -14,7 +15,7 @@ use Symfony\Component\Validator\Constraint;
  */
 final class Icao24bitAddress extends Constraint
 {
-    public const NOT_VALID = '9b5978e4-dc2c-4f43-9e2c-266679d8d4ae';
+    public const NOT_VALID = '2f2f5a80-e819-45da-a60f-0d750398d47e';
 
     public $message = 'The string {{ value }} is not a valid ICAO 24-bit address.';
 
@@ -23,6 +24,6 @@ final class Icao24bitAddress extends Constraint
      */
     public function validatedBy(): string
     {
-        return IataAirportCodeValidator::class;
+        return Icao24bitAddressValidator::class;
     }
 }

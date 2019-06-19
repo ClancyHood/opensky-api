@@ -2,7 +2,7 @@
 
 namespace OpenSkyApi\Validator;
 
-use OpenSkyApi\Validator\Constraints\IataAirportCode;
+use OpenSkyApi\Validator\Constraints\Icao24bitAddress;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -20,8 +20,8 @@ final class Icao24bitAddressValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
-        if ( ! $constraint instanceof IataAirportCode) {
-            throw new UnexpectedTypeException($constraint, IataAirportCode::class);
+        if ( ! $constraint instanceof Icao24bitAddress) {
+            throw new UnexpectedTypeException($constraint, Icao24bitAddress::class);
         }
 
         if (is_null($value) or empty($value)) {
@@ -34,7 +34,7 @@ final class Icao24bitAddressValidator extends ConstraintValidator
 
         if ( ! preg_match('/^[a-f0-9]{6}$/i', $value, $matches)) {
             $this->context->buildViolation($constraint->message)
-                          ->setCode(IataAirportCode::NOT_VALID)
+                          ->setCode(Icao24bitAddress::NOT_VALID)
                           ->setParameter('{{ value }}', $value)
                           ->addViolation();
         }

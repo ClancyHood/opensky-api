@@ -220,7 +220,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     break;
 
                 default:
-                    throw new Exception($exception->getMessage(), $exception->getCode());
+                    throw new \Exception($exception->getMessage(), $exception->getCode());
                     break;
             }
         }
