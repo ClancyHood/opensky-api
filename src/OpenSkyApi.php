@@ -7,7 +7,7 @@
 namespace OpenSkyApi;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
 use OpenSkyApi\Exception\AuthenticationRequiredException;
 use OpenSkyApi\Exception\BadCredentialsException;
@@ -90,7 +90,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         try {
             $response = $this->client->request('GET', '/api/flights/all', ['query' => $query]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -150,7 +150,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         try {
             $response = $this->client->request('GET', '/api/flights/aircraft', ['query' => $query]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -210,7 +210,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         try {
             $response = $this->client->request('GET', '/api/flights/arrival', ['query' => $query]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -246,7 +246,7 @@ class OpenSkyApi implements OpenSkyApiInterface
             new NotBlank([
                 'message' => 'An empty value is not allowed for the `airport` parameter.',
             ]),
-            new Regex([
+            new IcaoAirportCode([
                 'pattern' => '/^[a-z]{4}$/i',
                 'message' => '{{ value }} is not a valid ICAO airport code for the `airport` parameter.',
             ]),
@@ -271,7 +271,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         try {
             $response = $this->client->request('GET', '/api/flights/departure', ['query' => $query]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -374,7 +374,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         try {
             $response = $this->client->request('GET', '/api/states/own', ['query' => $parameters]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -508,7 +508,7 @@ class OpenSkyApi implements OpenSkyApiInterface
 
         try {
             $response = $this->client->request('GET', '/api/states/all', ['query' => $parameters]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -558,7 +558,7 @@ class OpenSkyApi implements OpenSkyApiInterface
                     'time'   => $time ?? 0,
                 ],
             ]);
-        } catch (ClientException $exception) {
+        } catch (GuzzleException $exception) {
             switch ($exception->getCode()) {
                 case 401:
                     throw new BadCredentialsException($exception->getMessage(), $exception->getCode());
@@ -591,14 +591,14 @@ class OpenSkyApi implements OpenSkyApiInterface
      * @param string $json
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     protected function parseJson(string $json): array
     {
         try {
             return json_decode($json, true, 8, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $exception) {
-            throw new Exception($exception->getMessage(), $exception->getCode(), $exception);
+        } catch (\Exception $exception) {
+            throw new Exception('An error occurred during the parsing of the response.');
         }
     }
 }
