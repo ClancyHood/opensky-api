@@ -1,6 +1,6 @@
 {
     "type": "library",
-    "name": "jbroutier/opensky-api",
+    "name": "clancyhood/opensky-api",
     "description": "A PHP client to retrieve data from the OpenSky live API.",
     "version": "0.2.0",
     "license": "MIT",
