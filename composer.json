@@ -2,7 +2,7 @@
     "type": "library",
     "name": "clancyhood/opensky-api",
     "description": "A PHP client to retrieve data from the OpenSky live API.",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "license": "MIT",
     "authors": [
         {
